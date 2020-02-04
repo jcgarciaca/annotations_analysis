@@ -1,6 +1,6 @@
 """
 Example usage:
-python count_elements_xml.py /home/msdc/jcgarciaca/projects/thalon/sku_detection/
+python count_elements_xml.py /home/msdc/jcgarciaca/projects/thalon/sku_detection
 """
 
 import numpy as np
@@ -16,7 +16,7 @@ import operator
 
 def main():
 	data_dir = sys.argv[1]
-	annotations_dir = data_dir + "Annotations/"
+	annotations_dir = os.path.join(data_dir, "Annotations")
 	xml_list = os.listdir(annotations_dir)
 	print('length files:', len(xml_list))
 
