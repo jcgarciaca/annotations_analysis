@@ -69,14 +69,14 @@ def main():
                     if 'bndbox' in attr.tag:
                         bndbox_enable = True
                         for data in list(attr):
-							if data.tag == 'xmin':
-								xmin.append(data.text)
-							if data.tag == 'ymin':
-								ymin.append(data.text)
-							if data.tag == 'xmax':
-								xmax.append(data.text)
-							if data.tag == 'ymax':
-								ymax.append(data.text)
+                            if data.tag == 'xmin':
+                                xmin.append(data.text)
+                            if data.tag == 'ymin':
+                                ymin.append(data.text)
+                            if data.tag == 'xmax':
+                                xmax.append(data.text)
+                            if data.tag == 'ymax':
+                                ymax.append(data.text)
 
                 if name_enable and bndbox_enable:
                     for i in range(len(xmin)):
