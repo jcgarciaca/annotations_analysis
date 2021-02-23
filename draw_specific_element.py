@@ -1,6 +1,6 @@
 """
 Example usage:
-python3 draw_specific_element.py /media/juliocesar/04968D53968D4660/Millenium/projects/flores/DJI_0289_alto/tmp IMG_1
+python3 draw_specific_element.py /media/juliocesar/04968D53968D4660/Millenium/projects/flores/DJI_0289_alto IMG_1
 """
 
 import sys

@@ -1,6 +1,6 @@
 """
 Example usage:
-python3 extract_images_from_annotation.py /media/juliocesar/04968D53968D4660/Millenium/projects/flores/DJI_0289_alto/tmp
+python3 extract_images_from_annotation.py /media/juliocesar/04968D53968D4660/Millenium/projects/flores/DJI_0289_alto
 """
 
 import sys
@@ -20,6 +20,7 @@ class ExtractImages:
         if not os.path.exists(self.images_tgt):
             os.mkdir(self.images_tgt)
         self.img_format = '.jpg'
+        self.use_subfolder = False
         self.run()
 
     def run(self):
@@ -48,13 +49,19 @@ class ExtractImages:
                             for data in list(attr):
                                 coords[data.tag] = int(data.text)
                     if not class_name is None and len(coords.keys()) == 4:
-                        sub_folder = os.path.join(self.images_tgt, class_name)
-                        if not os.path.exists(sub_folder):
-                            os.mkdir(sub_folder)
+                        if self.use_subfolder:
+                            sub_folder = os.path.join(self.images_tgt, class_name)
+                            if not os.path.exists(sub_folder):
+                                os.mkdir(sub_folder)
+                            filename = 'IMG_' + str(len(os.listdir(sub_folder)) + 1) + self.img_format
+                            file_path = os.path.join(sub_folder, filename)
+                        else:
+                            filename = 'IMG_' + str(len(os.listdir(self.images_tgt)) + 1) + self.img_format
+                            file_path = os.path.join(self.images_tgt, filename)
                         # get roi
                         sub_img = img[coords['ymin']:coords['ymax'], coords['xmin']:coords['xmax']]
-                        filename = 'IMG_' + str(len(os.listdir(sub_folder)) + 1) + self.img_format
-                        cv2.imwrite(os.path.join(sub_folder, filename), sub_img)
+                        
+                        cv2.imwrite(file_path, sub_img)
                         dict_ = {'Filename': filename, 'Original': xml_sample.split('.xml')[0] + self.img_format, 'Class': class_name, 
                                 'xmin': coords['xmin'], 'xmax': coords['xmax'], 'ymin': coords['ymin'], 'ymax': coords['ymax']
                                 }
