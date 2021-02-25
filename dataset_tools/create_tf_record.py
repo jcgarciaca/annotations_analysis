@@ -15,11 +15,11 @@
 
 """
 Example usage:
-python3 object_detection/dataset_tools/create_tf_record.py \
-    --data_dir=/home/jcgarciaca/Praxis/InteligenciaIMG/data/Galletas \
-    --output_path=/home/jcgarciaca/Praxis/models/research/output_train_tf_galletas.record \
-    --label_map_path=/home/jcgarciaca/Praxis/models/research/object_detection/data/sku_galletas_label_map.pbtxt \
-    --output_val_path=/home/jcgarciaca/Praxis/models/research/output_val_tf_galletas.record
+python object_detection/dataset_tools/create_tf_record.py \
+    --data_dir=/home/JulioCesar/flores/MIA2/landmark_detection \
+    --output_path=/home/JulioCesar/flores/MIA2/landmark_detection/tfrecords/output_train_tf.record \
+    --label_map_path=/home/JulioCesar/flores/MIA2/landmark_detection/landmarks_label_map.pbtxt \
+    --output_val_path=/home/JulioCesar/flores/MIA2/landmark_detection/tfrecords/output_val_tf.record
 """
 
 from __future__ import absolute_import
@@ -33,7 +33,9 @@ import os
 
 from lxml import etree
 import PIL.Image
-import tensorflow as tf
+
+import tensorflow.compat.v1 as tf
+# import tensorflow as tf
 
 from object_detection.utils import dataset_util
 from object_detection.utils import label_map_util
