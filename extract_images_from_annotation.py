@@ -1,6 +1,6 @@
 """
 Example usage:
-python3 extract_images_from_annotation.py /media/juliocesar/04968D53968D4660/Millenium/projects/flores/DJI_0289_alto
+python extract_images_from_annotation.py /home/msdc/jcgarciaca/projects/flores/MIA2/data/initial_data
 """
 
 import sys
@@ -19,12 +19,12 @@ class ExtractImages:
         self.csv_path = os.path.join(root_path, 'data.csv')
         if not os.path.exists(self.images_tgt):
             os.mkdir(self.images_tgt)
-        self.img_format = '.jpg'
-        self.use_subfolder = False
+        self.img_format = '.JPG'
+        self.use_subfolder = True
         self.run()
 
     def run(self):
-        xml_list = os.listdir(self.annotations_dir)
+        xml_list = [id for id in os.listdir(self.annotations_dir) if id.endswith('.xml')]
         print('Found {} annotations'.format(len(xml_list)))
 
         data_csv = list()
