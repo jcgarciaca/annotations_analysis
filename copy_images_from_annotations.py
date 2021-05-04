@@ -1,7 +1,7 @@
 import os
 import shutil
 
-annotations_folder = '/home/msdc/jcgarciaca/projects/flores/MIA2/landmark_detection/Marcas_2/Anotaciones'
+annotations_folder = '/home/msdc/jcgarciaca/projects/flores/MIA2/landmark_detection/Marcas_2/Annotations'
 images_folder = '/home/msdc/Desktop/videos_marcas_definitivas/frames'
 target_folder = '/home/msdc/jcgarciaca/projects/flores/MIA2/landmark_detection/Marcas_2/Images'
 if not os.path.exists(target_folder):
